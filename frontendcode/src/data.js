@@ -7,9 +7,10 @@ export const data = {
             image: '/images//product-1.jpg',
             price: 120,
             brand: 'Nike',
-            rating: 4.5,
+            rating: 4.3,
             numReviews: 10,
-            descripation: 'high qulity produvct'
+            descripation: 'high qulity produvct',
+            countInStock: 50
         },
         {
             _id: '2',
@@ -18,9 +19,10 @@ export const data = {
             image: '/images//product-2.jpg',
             price: 130,
             brand: 'Adidas',
-            rating: 4.0,
+            rating: 3.0,
             numReviews: 40,
-            descripation: 'high qulity produvct'
+            descripation: 'high qulity produvct',
+            countInStock: 0
         },
         {
             _id: '3',
@@ -29,9 +31,10 @@ export const data = {
             image: '/images//product-3.jpg',
             price: 120,
             brand: 'Locost',
-            rating: 4.5,
+            rating: 2.5,
             numReviews: 10,
-            descripation: 'high qulity produvct'
+            descripation: 'high qulity produvct',
+            countInStock: 60
         },
         {
             _id: '4',
@@ -42,7 +45,8 @@ export const data = {
             brand: 'Nike',
             rating: 4.5,
             numReviews: 10,
-            descripation: 'high qulity produvct'
+            descripation: 'high qulity produvct',
+            countInStock: 23
         },
         {
             _id: '5',
@@ -53,7 +57,8 @@ export const data = {
             brand: 'puma',
             rating: 4.5,
             numReviews: 40,
-            descripation: 'high qulity produvct'
+            descripation: 'high qulity produvct',
+            countInStock: 8
         },
         {
             _id: '6',
@@ -64,7 +69,8 @@ export const data = {
             brand: 'Adidas',
             rating: 3.5,
             numReviews: 10,
-            descripation: 'high qulity produvct'
+            descripation: 'high qulity produvct',
+            countInStock: 0
         },
     ]
 }
