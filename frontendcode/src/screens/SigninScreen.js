@@ -1,16 +1,39 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { signin } from '../Action/userAction';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
-export default function SigninScreen() {
+export default function SigninScreen(props) {
 
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
+    console.log(props.location.search);
+
+
+    const userSignin = useSelector((state) => state.userSignin)
+    const { userInfo, loading, error } = userSignin;
+    console.log(userInfo);
+
+    const dispatch = useDispatch();
+
     const submitHandaler = (e) => {
         e.preventDefault();
-        //Todo for sigiaction
+        dispatch(signin(email, password));
     }
+
+    useEffect(() => {
+        if (userInfo) {
+            props.history.push(redirect);
+        }
+        return () => {
+
+        }
+    }, [props.history, redirect, userInfo])
 
     return (
         <div>
@@ -18,6 +41,8 @@ export default function SigninScreen() {
                 <div>
                     <h1>Sigi in</h1>
                 </div>
+                {loading && <LoadingBox></LoadingBox>}
+                {error && <MessageBox variant="danger">{error}</MessageBox>}
                 <div>
                     <label htmlFrom="email">Email</label>
                     <input

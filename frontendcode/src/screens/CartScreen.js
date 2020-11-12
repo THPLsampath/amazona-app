@@ -25,7 +25,7 @@ export default function CartScreen(props) {
     }
 
     const checkouthandaler = () => {
-        props.history.push('./signin?redirect=shipping');
+        props.history.push('/signin?redirect=shipping');
     }
 
     return (
