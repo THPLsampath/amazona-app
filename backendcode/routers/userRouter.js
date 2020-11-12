@@ -41,19 +41,24 @@ userRouter.post('/register', expressAsyncHandler(async (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
-    const user = new User({
-        name: name,
-        email: email,
-        password: bcrypt.hashSync(password, 8)
-    })
-    const createdUser = await user.save();
-    res.send({
-        _id: createdUser._id,
-        name: createdUser.name,
-        email: createdUser.email,
-        isAdmin: createdUser.isAdmin,
-        token: generateToken(createdUser)
-    })
+    const user = await User.findOne({ email: email });
+    if (!user) {
+        const newuser = new User({
+            name: name,
+            email: email,
+            password: bcrypt.hashSync(password, 8)
+        })
+        const createdUser = await newuser.save();
+        res.send({
+            _id: createdUser._id,
+            name: createdUser.name,
+            email: createdUser.email,
+            isAdmin: createdUser.isAdmin,
+            token: generateToken(createdUser)
+        })
+    } else {
+        res.status(404).send({ message: 'email adderss is all ready exict plase try is another email' })
+    }
 }))
 
 
