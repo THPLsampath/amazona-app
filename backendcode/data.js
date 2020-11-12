@@ -1,7 +1,22 @@
+import bcrypt from 'bcryptjs';
+
 export const data = {
+    users: [
+        {
+            name: 'prasanna',
+            email: 'admin@example.com',
+            password: bcrypt.hashSync("12345", 8),
+            iaAdmin: true
+        },
+        {
+            name: 'sampath',
+            email: 'user@example.com',
+            password: bcrypt.hashSync("12345", 8),
+            iaAdmin: false
+        }
+    ],
     products: [
         {
-            _id: '1',
             name: 'nick slim shart',
             category: 'shart',
             image: '/images//product-1.jpg',
@@ -13,7 +28,7 @@ export const data = {
             countInStock: 50
         },
         {
-            _id: '2',
+
             name: 'Adidas fit shart',
             category: 'shart',
             image: '/images//product-2.jpg',
@@ -25,7 +40,7 @@ export const data = {
             countInStock: 0
         },
         {
-            _id: '3',
+
             name: 'Locost free shart',
             category: 'shart',
             image: '/images//product-3.jpg',
@@ -37,7 +52,7 @@ export const data = {
             countInStock: 60
         },
         {
-            _id: '4',
+
             name: 'nick slim Pants',
             category: 'Pants',
             image: '/images//product-4.jpg',
@@ -49,7 +64,7 @@ export const data = {
             countInStock: 23
         },
         {
-            _id: '5',
+
             name: 'puma slim pant',
             category: 'pant',
             image: '/images//product-5.jpg',
@@ -61,7 +76,7 @@ export const data = {
             countInStock: 8
         },
         {
-            _id: '6',
+
             name: 'Adidas slim pant',
             category: 'pant',
             image: '/images//product-6.jpg',

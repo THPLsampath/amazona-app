@@ -72,6 +72,9 @@ li{
   margin-top: 1rem;
 }
 
+input,
+select,
+textarea,
 button{
   padding: 1rem;
   border: .1rem #a4a4a4 solid;
@@ -80,10 +83,15 @@ button{
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button{
   background-color: #f8f8f8;
   cursor: pointer;
 }
-
+input:hover,
+select:hover,
+textarea:hover,
 button:hover{
   border: .1rem #404040 solid;
 }
@@ -105,6 +113,15 @@ header a{
 a.brand{
   font-size: 3rem;
   font-weight: bold;
+}
+
+.badge{
+  background-color: #f02020;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  font-size: 1.4rem;
+  margin-left: 0.2rem;
 }
 
 .row{
@@ -130,9 +147,17 @@ a.brand{
   flex: 2 1 50rem;
 }
 
+.min-30{
+  min-width: 30rem;
+}
+
 /* omage  */
 .img{
   border-radius: 0.5rem;
+}
+img.small{
+  max-width: 5rem;
+  width: 100%;
 }
 img.medium{
   max-width: 29rem;
@@ -183,7 +208,7 @@ img.large{
 }
 
 .danger{
-  color: red;
+  color: red; 
   font-weight: bold;
 }
 
@@ -201,4 +226,22 @@ img.large{
 .alert-danger{
   color: #a02020;
   background-color: #ffe0e0e0;
+}
+
+/* form */
+
+.form{
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.form>div{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.form label{
+  margin: 1rem 0;
+  display: block;
 }

@@ -1,25 +1,43 @@
 import express from 'express';
-import { data } from './data.js';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import productRouter from './routers/productRouter.js';
+import userRouter from './routers/userRouter.js'
 
+dotenv.config();
 const app = express();
 
-app.get('/api/products/:id', (req, res) => {
-    const product = data.products.find(x => x._id === req.params.id);
-    if (product) {
-        res.send(product)
-    } else {
-        res.status(404).send({ messages: 'product not found' })
-    }
-});
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/api/products', (req, res) => {
-    res.send(data.products);
-    // console.log(data)
-});
+// parse application/json
+app.use(bodyParser.json())
+
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/amazona',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    },
+    () => {
+        console.log('database is connected')
+    }
+);
 
 app.get('/', (req, res) => {
     res.send('server is ready');
 });
+
+
+app.use('/api/users', userRouter);
+app.use('/api/products', productRouter);
+
+
+app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
+})
+
 
 const PORT = process.env.port || 5000
 app.listen(PORT, () => {
